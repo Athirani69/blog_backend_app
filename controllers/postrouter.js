@@ -12,4 +12,9 @@ rout.post("/add",async(req,res)=>{
     })
 })
 
+rout.get("/view",async(req,res)=>{
+    let result=await postModel.find()
+    res.json(result)
+})
+
 module.exports=rout
