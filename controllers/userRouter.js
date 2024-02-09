@@ -26,7 +26,48 @@ userRoute.post("/add",async(req,res)=>{
             })
         })
         }
-    )
+     )
+     
+
+    // const hashedPassword=await hashPasswordGenerator(pass)
+    // data.pass=hashedPassword
+    // let user=new usrMdl(data)
+    // let result=await user.save()
+    // res.json({
+    //     status:"success"
+    // })
+
+
+
+    userRoute.post("/signin",async(req,res)=>{
+          let input=req.body
+          let email=req.body.email
+          let data=await usrMdl.findOne({"email":email})
+          if(!data)
+          {
+            return res.json({
+                status:"invalid user"
+            })
+          }
+          console.log(data)
+          let dbPassword=data.pass
+          let inputPassword=req.body.pass
+          console.log(dbPassword)
+          console.log(inputPassword)
+          const match=await bcrypt.compare(inputPassword,dbPassword)
+          {
+            if(!match)
+            {
+                return res.json({
+                    status:"invalid password"
+                })
+            }
+          }
+          res.json({
+            status:"suscfuly login"
+          })
+
+    })
     
 
     //let data=req.body
