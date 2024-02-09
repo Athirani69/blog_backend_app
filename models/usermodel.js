@@ -3,7 +3,6 @@ const mongoose=require("mongoose")
 const usrSchema=new mongoose.Schema(
     {
         name:String,
-        age:String,
         mob:String,
         adrs:String,
         pincode:String,
