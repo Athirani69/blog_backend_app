@@ -12,4 +12,11 @@ rout.post("/add",async(req,res)=>{
     })
 })
 
+rout.get("/view",async(req,res)=>{
+    let result=await postModel.find()
+    .populate("userId","name mob email adrs -_id")
+    .exec()
+    res.json(result)
+})
+
 module.exports=rout
