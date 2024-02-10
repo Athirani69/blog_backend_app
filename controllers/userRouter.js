@@ -69,6 +69,12 @@ userRoute.post("/add",async(req,res)=>{
 
     })
 
+    userRoute.get("/view",async(req,res)=>{
+        let data=await usrMdl.find()
+        res.json(data)
+        
+    })
+
     
     
 
